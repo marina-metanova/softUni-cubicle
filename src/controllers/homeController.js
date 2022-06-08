@@ -1,9 +1,14 @@
+const express = require('express');
 const cubes = require('../db.json');
+const { route } = require('./cubeController');
+const router = require('./cubeController');
 
-exports.index = (req, res) => {
+router.get('/', (req, res) => {
     res.render('index', { cubes });
-};
+});
 
-exports.about = (req, res) => {
+router.get('/about', (req, res) => {
     res.render('about');
-};
+});
+
+module.exports = router;
