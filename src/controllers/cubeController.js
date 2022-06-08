@@ -21,5 +21,11 @@ router.post('/create', (req, res) => {
         .catch(err => {
             res.status(400).send(err);
         })
+});
+
+router.get('/details/:id', async (req, res) => {
+    const cube = await cubeService.getOne(req.params.id);
+
+    res.render('details', { cube });
 })
 module.exports = router;
