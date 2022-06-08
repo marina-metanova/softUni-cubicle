@@ -1,9 +1,12 @@
-const express = require('express');
 const cubes = require('../db.json');
-const { route } = require('./cubeController');
 const router = require('./cubeController');
+const cubeService = require('../services/cubeServices');
 
 router.get('/', (req, res) => {
+    let { search, from, to} = req.query;
+    
+    const cubes = cubeService.getAll(search, from, to);
+
     res.render('index', { cubes });
 });
 
