@@ -7,7 +7,6 @@ router.get('/create', (req, res) => {
 
 router.post('/create', (req, res) => {
     const cube = req.body;
-    console.log(cube);
     
     if(cube.name.length < 2) {
         res.status(400).send('Invalid request');
