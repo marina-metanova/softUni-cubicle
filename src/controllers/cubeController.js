@@ -13,7 +13,7 @@ router.post('/create', (req, res) => {
         return;
     }
 
-    cubeService.save(cube)
+    cubeService.create(cube)
         .then(() => {
             res.redirect('/');
         })
@@ -23,8 +23,9 @@ router.post('/create', (req, res) => {
 });
 
 router.get('/details/:id', async (req, res) => {
-    const cube = await cubeService.getOne(req.params.id);
-
+    const cube = await cubeService.getOne(req.params.id).lean();
+    
     res.render('details', { cube });
 })
+
 module.exports = router;

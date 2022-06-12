@@ -1,7 +1,6 @@
-const mongoose = requite('mongoose');
+const mongoose = require('mongoose');
 
-const cubeSchema = new mongoose.cubeSchema({
-    _id: mongoose.Types.ObjectId,
+const cubeSchema = new mongoose.Schema({
     name: {
         type: String,
         require: true,
@@ -11,10 +10,10 @@ const cubeSchema = new mongoose.cubeSchema({
         require: true,
         maxlength: 120,
     },
-    imageUrl: {
+    imageURL: {
         type: String,
         require: true,
-    };
+    },
     difficultyLevel:{
         type: String,
         require: true,
@@ -23,10 +22,10 @@ const cubeSchema = new mongoose.cubeSchema({
     }
 });
 
-cubeSchema.path('imageUrl').validate(function() {
-    return this.name.startsWith('http')
+cubeSchema.path('imageURL').validate(function() {
+    return this.imageURL.startsWith('http')
 }, 'Image url should be a link!');
 
-const Cube = mongoose.model('cube', cubeSchema);
+const Cube = mongoose.model('Cube', cubeSchema);
 
-modules.exports = Cube;
+module.exports = Cube;
