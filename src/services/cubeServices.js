@@ -3,17 +3,15 @@ const Cube = require('../models/cube');
 const path = require('path');
 const Accessory = require('../models/Accessory');
 
-exports.getAll = async (search, from, to) => {
-    let cubes = await Cube.find().lean();
-    
-    // if (search == undefined && from == undefined && to == undefined) {
-    //     return cubes;
-    // }
+exports.getAll = async (search = '', fromInput, toInput) => {
+    const from = Number(fromInput) || 0;
+    const to = Number(toInput) || 0;
 
-    // search = search.toLowerCase();
+    let cubes = await Cube.find().lean();
+
 
     // const result = cubes
-    //     .filter(x => x.name.toLowerCase().includes(search))
+    //     .filter(x => x.name.toLowerCase().includes(search.toLowerCase()))
     //     .filter(x => x.difLevel >= from)
     //     .filter(x => x.difLevel <= to);
 
